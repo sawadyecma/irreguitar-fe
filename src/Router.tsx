@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/pages/Home";
-import { TurningList } from "./components/pages/TurningList";
+import { Home } from "./pages/Home/Home";
+import { TurningList } from "./pages/TurningList/TurningList";
 
 export const Router = () =>  {
 	return (
