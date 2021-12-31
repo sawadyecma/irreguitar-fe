@@ -1,4 +1,4 @@
-import { Cell } from "../../atoms/Cell"
+import { Cell } from "../../components/Cell"
 
 export const TurningList = () => {
     const flets = Array.from(Array(12), (_, k) => k)
