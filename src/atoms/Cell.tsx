@@ -10,7 +10,7 @@ interface CellProps {
     pressed: Boolean
 }
 
-export const Cell = ({pressed}:CellProps) => {
+export const Cell = ({pressed=false}:CellProps) => {
     const classes = useStyles();
     return <p className={classes.cell}>cell {pressed && "!!"}</p>
 }
