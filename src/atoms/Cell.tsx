@@ -6,11 +6,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-interface CellProps {
-    pressed: Boolean
+interface Props {
+    pressed?: Boolean
 }
 
-export const Cell = ({pressed=false}:CellProps) => {
+export const Cell = ({pressed = false}:Props) => {
     const classes = useStyles();
     return <p className={classes.cell}>cell {pressed && "!!"}</p>
 }
