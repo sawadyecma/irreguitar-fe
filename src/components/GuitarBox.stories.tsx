@@ -57,3 +57,32 @@ export const F_PressedGuitar = () => <GuitarBox
         },
     ]}
 />;
+
+export const MinorPentaScale = () => <GuitarBox 
+    threads={[
+        {
+            thNum: 1,
+            markedFlets: [5,8],
+        },
+        {
+            thNum: 2,
+            markedFlets: [5,8],
+        },        
+        {
+            thNum: 3,
+            markedFlets: [5,7],
+        },        
+        {
+            thNum: 4,
+            markedFlets: [5,7],
+        },
+        {
+            thNum: 5,
+            markedFlets: [5,7],
+        },
+        {
+            thNum: 6,
+            markedFlets: [5,8],
+        },
+    ]}
+/>;
