@@ -2,9 +2,14 @@ import { CELL_COLOR, CELL_HEIGHT, CELL_WEIGHT, CELL_WIDTH, PRESS_CIRCLE_RADIUS }
 
 interface Props {
     pressed?: Boolean
+    onClick?: () => void
 }
 
-export const Cell = ({pressed = false}:Props) => {
+export const Cell = ({
+    pressed = false,
+    onClick = undefined
+}:Props) => {
+
     const w = CELL_WIDTH;
     const h = CELL_HEIGHT;
     const sw = CELL_WEIGHT
@@ -12,7 +17,7 @@ export const Cell = ({pressed = false}:Props) => {
     const circleRadius = PRESS_CIRCLE_RADIUS
 
     return (
-        <svg width={w} height={h}>
+        <svg width={w} height={h} onClick={onClick}>
             {/* 上横線 */}
             <line x1={0} y1={0} x2={w} y2={0} strokeWidth={sw} stroke={sc}/>
             {/* 下横線 */}

@@ -7,7 +7,10 @@ interface Props {
     fletCnt?: number
 }
 
-export const GuitarBox = ({threads, fletCnt = 15}: Props) => {
+export const GuitarBox = ({
+    threads,
+    fletCnt = 15,
+}: Props) => {
 
     return (
         <div
@@ -22,7 +25,10 @@ export const GuitarBox = ({threads, fletCnt = 15}: Props) => {
                         height: CELL_HEIGHT-CELL_WEIGHT/2,
                     }}
                 >
-                    <ThreadBox fletCnt={fletCnt}/>
+                    <ThreadBox 
+                        fletCnt={fletCnt}
+                        pressedFlet={thread.pressedFlet}
+                    />
                 </div>
             )
         })}
