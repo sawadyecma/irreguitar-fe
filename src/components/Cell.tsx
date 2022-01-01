@@ -1,31 +1,26 @@
-// import { makeStyles } from "@material-ui/core"
-
-// const useStyles = makeStyles((theme) => ({
-//     cell:{
-//         display: "inline",
-//     }
-// }))
+import { CELL_COLOR, CELL_HEIGHT, CELL_WEIGHT, CELL_WIDTH, PRESS_CIRCLE_RADIUS } from "../constants/cell";
 
 interface Props {
     pressed?: Boolean
 }
 
 export const Cell = ({pressed = false}:Props) => {
-    // const classes = useStyles();
-    const w = 24*2;
-    const h = 24*2;
-    const sw = 3
-    const sc = "rgb(0,0,0)"
-    const circleRate = 0.5
-    const circleLen = w * circleRate/2
-    // return <p className={classes.cell}>cell {pressed && "!!"}</p>
+    const w = CELL_WIDTH;
+    const h = CELL_HEIGHT;
+    const sw = CELL_WEIGHT
+    const sc = CELL_COLOR
+    const circleRadius = PRESS_CIRCLE_RADIUS
+
     return (
         <svg width={w} height={h}>
+            {/* 上横線 */}
             <line x1={0} y1={0} x2={w} y2={0} strokeWidth={sw} stroke={sc}/>
+            {/* 下横線 */}
             <line x1={0} y1={h} x2={w} y2={h} strokeWidth={sw} stroke={sc}/>
+            {/* 中縦線 */}
             <line x1={w/2} y1={0} x2={w/2} y2={h} strokeWidth={sw/2} stroke={sc}/>
             {pressed && 
-                <circle cx={w/2} cy={h/2} r={circleLen} strokeWidth={sw} stroke={sc} fill={sc}/>
+                <circle cx={w/2} cy={h/2} r={circleRadius} strokeWidth={sw} stroke={sc} fill={sc}/>
             }
         </svg>
     )
