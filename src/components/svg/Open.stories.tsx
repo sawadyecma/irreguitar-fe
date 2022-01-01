@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Open } from './Open';
 
 export default {
-    title: 'Open',
+    title: 'svg/Open',
     component: Open,
 };
 

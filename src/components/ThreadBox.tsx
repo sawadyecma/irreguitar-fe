@@ -1,5 +1,5 @@
-import { Cell } from "./Cell"
-import { Open } from "./Open"
+import { Cell } from "./svg/Cell"
+import { Open } from "./svg/Open"
 
 interface Props {
     fletCnt?: number

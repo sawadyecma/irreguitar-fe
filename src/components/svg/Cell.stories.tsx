@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Cell } from './Cell';
 
 export default {
-    title: 'Cell',
+    title: 'svg/Cell',
     component: Cell,
 };
 
