@@ -152,3 +152,62 @@ export const ScaleMaker = () => {
 
     return <GuitarBox threads={threads} onClick={onClickHandler}/>
 }
+
+export const ChordMaker = () => {
+    const [threads, setThreads] = useState<Thread[]>([
+        {
+            thNum: 1, 
+            markedFlets: [],
+        },
+        {
+            thNum: 2, 
+            markedFlets: [],
+        },
+        {
+            thNum: 3, 
+            markedFlets: [],
+        },
+        {
+            thNum: 4, 
+            markedFlets: [],
+        },
+        {
+            thNum: 5, 
+            markedFlets: [],
+        },
+        {
+            thNum: 6, 
+            markedFlets: [],
+        },
+    ])
+
+    const onClickHandler = (thNum: number, flet: number):void =>{
+        const targetThread = threads.find((t)=>t.thNum === thNum)
+        if (targetThread === undefined){
+            return
+        }
+
+        if(targetThread.markedFlets.includes(flet)){
+            setThreads((threadList) => {
+                return threadList.map((thread)=>{
+                    if (thread.thNum === thNum){
+                        return {...thread, markedFlets: thread.markedFlets.filter((f)=>f!==flet)}
+                    }
+                    return thread
+                })
+            })
+            return
+        }
+
+        setThreads((threadList) => {
+            return threadList.map((thread)=>{
+                if (thread.thNum === thNum){
+                    return {...thread, markedFlets: [flet]}
+                }
+                return thread
+            })
+        })
+    }
+
+    return <GuitarBox threads={threads} onClick={onClickHandler}/>
+}
