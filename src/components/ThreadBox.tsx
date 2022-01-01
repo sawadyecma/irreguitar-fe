@@ -1,4 +1,5 @@
 import { Cell } from "./Cell"
+import { Open } from "./Open"
 
 interface Props {
     fletCnt?: number
@@ -20,13 +21,19 @@ export const ThreadBox = ({
     return(
         <>
         {flets.map((f) => {
-            return (
-                <Cell
+            if(f === 0){
+                return <Open
+                    key={f}
+                    marked={markedFlets.includes(f)}
+                    onClick={onClick ? ()=>onClick(f) : undefined}
+                />    
+            }else{
+                return <Cell
                     key={f}
                     marked={markedFlets.includes(f)}
                     onClick={onClick ? ()=>onClick(f) : undefined}
                 />
-            )
+            }
         })}
         </>
     )
