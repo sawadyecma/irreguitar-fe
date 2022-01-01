@@ -27,7 +27,7 @@ export const GuitarBox = ({
                 >
                     <ThreadBox 
                         fletCnt={fletCnt}
-                        pressedFlet={thread.pressedFlet}
+                        markedFlets={thread.markedFlets}
                     />
                 </div>
             )

@@ -1,7 +1,7 @@
 export interface Thread{
     thNum: ThreadNum
     openNote?: OpenNote
-    pressedFlet?: number
+    markedFlets?: number[]
 }
 
 export type ThreadNum = 1|2|3|4|5|6 

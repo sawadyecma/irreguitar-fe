@@ -33,27 +33,27 @@ export const F_PressedGuitar = () => <GuitarBox
     threads={[
         {
             thNum: 1,
-            pressedFlet: 1,
+            markedFlets: [1],
         },
         {
             thNum: 2,
-            pressedFlet: 1,
+            markedFlets: [1],
         },        
         {
             thNum: 3,
-            pressedFlet: 2,
+            markedFlets: [2],
         },        
         {
             thNum: 4,
-            pressedFlet: 3,
+            markedFlets: [3],
         },
         {
             thNum: 5,
-            pressedFlet: 3,
+            markedFlets: [3],
         },
         {
             thNum: 6,
-            pressedFlet: 1,
+            markedFlets: [1],
         },
     ]}
 />;

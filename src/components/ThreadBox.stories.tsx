@@ -6,13 +6,13 @@ export default {
     component: ThreadBox,
 };
 
-export const OctaveTheadPressed = () => <ThreadBox fletCnt={12} pressedFlet={3}/>;
+export const OctaveTheadPressed = () => <ThreadBox fletCnt={12} markedFlets={[3]}/>;
 export const OctaveThreadOpened = () => <ThreadBox fletCnt={12} />;
-export const PressableOctaveThread = () => {
-    const [pressedFlet, setPressedFlet] = useState<number|undefined>(undefined)
+export const OnePressableOctaveThread = () => {
+    const [pressedFlet, setPressedFlet] = useState<number>(0)
     return <ThreadBox 
         fletCnt={12} 
-        pressedFlet={pressedFlet}
+        markedFlets={[pressedFlet]}
         onClick={(f)=>setPressedFlet(f)}
     />
 }

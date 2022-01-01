@@ -6,15 +6,15 @@ export default {
     component: Cell,
 };
 
-export const PressedCell = () => <Cell pressed/>;
+export const PressedCell = () => <Cell marked/>;
 export const NonPressedCell = () => <Cell/>;
 
 export const PressableCell = () => {
 
-    const [pressed, setPressed] = useState<boolean>(false)
+    const [marked, setMarked] = useState<boolean>(false)
 
     return <Cell 
-        pressed={pressed}
-        onClick={()=>setPressed(!pressed)}
+        marked={marked}
+        onClick={()=>setMarked(!marked)}
     />
 };

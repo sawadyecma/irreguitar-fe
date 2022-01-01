@@ -4,14 +4,14 @@ interface Props {
     fletCnt?: number
     // undefined => 押弦なし
     // 0 => 開放弦
-    pressedFlet?: number
+    markedFlets?: number[]
 
     onClick?: (fletNum: number) => void;
 }
 
 export const ThreadBox = ({
     fletCnt = 12,
-    pressedFlet,
+    markedFlets,
     onClick = undefined,
 }:Props) => {
     const flets = Array.from(Array(fletCnt), (_, k) => k)
@@ -21,7 +21,7 @@ export const ThreadBox = ({
         {flets.map((f) => {
             return (
                 <Cell 
-                    pressed={f===pressedFlet}
+                    marked={markedFlets?.includes(f)}
                     onClick={onClick ? ()=>onClick(f) : undefined}
                 />
             )
