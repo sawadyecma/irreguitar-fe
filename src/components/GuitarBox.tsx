@@ -23,11 +23,12 @@ export const GuitarBox = ({
         {threads.map((thread) => {
             return (
                 <div
+                    key={thread.thNum}
                     style={{
                         height: CELL_HEIGHT-CELL_WEIGHT/2,
                     }}
                 >
-                    <ThreadBox 
+                    <ThreadBox
                         fletCnt={fletCnt}
                         markedFlets={thread.markedFlets}
                         onClick={onClick ? (flet) => onClick(thread.thNum, flet) : undefined}
