@@ -1,4 +1,4 @@
-import { Cell } from "../../components/Cell"
+import { Cell } from "../../components/svg/Cell"
 
 export const TurningList = () => {
     const flets = Array.from(Array(12), (_, k) => k)
@@ -6,7 +6,7 @@ export const TurningList = () => {
         <>
         <div>TurningList</div>
         {flets.map((f) => {
-            return <Cell pressed={f%3===2}/>
+            return <Cell marked={f%3===2}/>
         })}
         </>
     )
