@@ -4,5 +4,7 @@
 
 .env
 
+build-storybook.log
+
 # misc
 .DS_Store
