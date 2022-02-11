@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Thread } from "../types/thread";
+import { ChordNameBox } from "./ChordNameBox";
 import { GuitarBox } from "./GuitarBox";
 
 export default {
@@ -174,15 +175,15 @@ export const ChordMaker = () => {
     },
     {
       thNum: 3,
-      markedFlets: [],
+      markedFlets: [0],
     },
     {
       thNum: 4,
-      markedFlets: [],
+      markedFlets: [2],
     },
     {
       thNum: 5,
-      markedFlets: [],
+      markedFlets: [3],
     },
     {
       thNum: 6,
@@ -221,5 +222,10 @@ export const ChordMaker = () => {
     });
   };
 
-  return <GuitarBox threads={threads} onClick={onClickHandler} />;
+  return (
+    <>
+      <GuitarBox threads={threads} onClick={onClickHandler} />
+      <ChordNameBox threads={threads} />
+    </>
+  );
 };
