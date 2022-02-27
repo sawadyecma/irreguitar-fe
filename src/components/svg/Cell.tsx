@@ -8,11 +8,12 @@ import {
   THREAD_COLOR,
   THREAD_WEIGHT,
 } from "../../constants/cell";
+import { calcMidVerLine, HalfCut } from "./modules";
 
 interface Props {
   marked?: boolean;
   onClick?: () => void;
-  halfCut?: "top" | "bottom";
+  halfCut?: HalfCut;
   auxiliary?: boolean;
 }
 
@@ -33,6 +34,9 @@ export const Cell = ({
   const pr = PRESS_CIRCLE_RADIUS;
   const pc = PRESS_CIRCLE_COLOR;
 
+  // 中間線の計算
+  const midVerLine = calcMidVerLine(h, halfCut);
+
   return (
     <svg width={w} height={h} onClick={onClick}>
       {/* 補助線 */}
@@ -46,7 +50,14 @@ export const Cell = ({
       )}
 
       {/* 中縦線 = フレット */}
-      <line x1={w / 2} y1={0} x2={w / 2} y2={h} strokeWidth={tw} stroke={tc} />
+      <line
+        x1={w / 2}
+        y1={midVerLine.stY}
+        x2={w / 2}
+        y2={midVerLine.edY}
+        strokeWidth={tw}
+        stroke={tc}
+      />
       {/* 中横線 = 弦 */}
       <line x1={0} y1={h / 2} x2={w} y2={h / 2} strokeWidth={tw} stroke={tc} />
       {marked && (

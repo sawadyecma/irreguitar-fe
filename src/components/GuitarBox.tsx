@@ -1,5 +1,6 @@
 import { CELL_HEIGHT, CELL_WEIGHT } from "../constants/cell";
 import { Thread } from "../types/thread";
+import { calcHalfCut } from "./svg/modules";
 import { ThreadBox } from "./ThreadBox";
 
 interface Props {
@@ -19,7 +20,7 @@ export const GuitarBox = ({
         whiteSpace: "nowrap",
       }}
     >
-      {threads.map((thread) => {
+      {threads.map((thread, index) => {
         return (
           <div
             key={thread.thNum}
@@ -33,6 +34,7 @@ export const GuitarBox = ({
               onClick={
                 onClick ? (flet) => onClick(thread.thNum, flet) : undefined
               }
+              halfCut={calcHalfCut(index, threads)}
             />
           </div>
         );

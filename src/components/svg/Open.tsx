@@ -9,11 +9,12 @@ import {
   THREAD_COLOR,
   THREAD_WEIGHT,
 } from "../../constants/cell";
+import { calcMidVerLine, HalfCut } from "./modules";
 
 interface Props {
   marked?: Boolean;
   onClick?: () => void;
-  halfCut?: "top" | "bottom";
+  halfCut?: HalfCut;
   auxiliary?: boolean;
 }
 
@@ -36,6 +37,7 @@ export const Open = ({
 
   const ow = OPEN_WIDTH;
 
+  const midVerLine = calcMidVerLine(h, halfCut);
   return (
     <svg width={w} height={h} onClick={onClick}>
       {/* 補助線 */}
@@ -64,17 +66,17 @@ export const Open = ({
       {/* 中縦線2つ */}
       <line
         x1={w / 2 - ow}
-        y1={0}
+        y1={midVerLine.stY}
         x2={w / 2 - ow}
-        y2={h}
+        y2={midVerLine.edY}
         strokeWidth={tw}
         stroke={tc}
       />
       <line
         x1={w / 2 + ow}
-        y1={0}
+        y1={midVerLine.stY}
         x2={w / 2 + ow}
-        y2={h}
+        y2={midVerLine.edY}
         strokeWidth={tw}
         stroke={tc}
       />

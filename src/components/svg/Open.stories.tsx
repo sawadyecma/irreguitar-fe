@@ -9,6 +9,8 @@ export default {
 export const Pressed = () => <Open marked />;
 export const NonPressed = () => <Open />;
 export const Auxiliary = () => <Open auxiliary />;
+export const halfCutTop = () => <Open halfCut="top" />;
+export const halfCutBottom = () => <Open halfCut="bottom" />;
 
 export const Pressable = () => {
   const [marked, setMarked] = useState<boolean>(false);
