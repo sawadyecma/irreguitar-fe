@@ -24,7 +24,7 @@ export const ThreadBox = ({
 
   return (
     <>
-      {flets.map((f, index) => {
+      {flets.map((f) => {
         if (f === 0) {
           return (
             <Open
