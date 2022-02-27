@@ -13,9 +13,16 @@ import {
 interface Props {
   marked?: Boolean;
   onClick?: () => void;
+  halfCut?: "top" | "bottom";
+  auxiliary?: boolean;
 }
 
-export const Open = ({ marked = false, onClick = undefined }: Props) => {
+export const Open = ({
+  marked = false,
+  onClick = undefined,
+  halfCut,
+  auxiliary = false,
+}: Props) => {
   const w = CELL_WIDTH / 2;
   const h = CELL_HEIGHT;
   const cw = CELL_WEIGHT;
@@ -31,10 +38,29 @@ export const Open = ({ marked = false, onClick = undefined }: Props) => {
 
   return (
     <svg width={w} height={h} onClick={onClick}>
-      {/* 上横線 */}
-      <line x1={w / 2 - ow} y1={0} x2={w} y2={0} strokeWidth={cw} stroke={cc} />
-      {/* 下横線 */}
-      <line x1={w / 2 - ow} y1={h} x2={w} y2={h} strokeWidth={cw} stroke={cc} />
+      {/* 補助線 */}
+      {auxiliary && (
+        <>
+          {/* 上横線 */}
+          <line
+            x1={w / 2 - ow}
+            y1={0}
+            x2={w}
+            y2={0}
+            strokeWidth={cw}
+            stroke={cc}
+          />
+          {/* 下横線 */}
+          <line
+            x1={w / 2 - ow}
+            y1={h}
+            x2={w}
+            y2={h}
+            strokeWidth={cw}
+            stroke={cc}
+          />
+        </>
+      )}
       {/* 中縦線2つ */}
       <line
         x1={w / 2 - ow}

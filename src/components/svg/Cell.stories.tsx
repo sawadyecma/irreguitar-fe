@@ -6,8 +6,9 @@ export default {
   component: Cell,
 };
 
-export const PressedCell = () => <Cell marked />;
-export const NonPressedCell = () => <Cell />;
+export const Pressed = () => <Cell marked />;
+export const NonPressed = () => <Cell />;
+export const Auxiliary = () => <Cell auxiliary />;
 
 export const PressableCell = () => {
   const [marked, setMarked] = useState<boolean>(false);

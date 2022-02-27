@@ -6,10 +6,11 @@ export default {
   component: Open,
 };
 
-export const PressedOpen = () => <Open marked />;
-export const NonPressedOpen = () => <Open />;
+export const Pressed = () => <Open marked />;
+export const NonPressed = () => <Open />;
+export const Auxiliary = () => <Open auxiliary />;
 
-export const PressableOpen = () => {
+export const Pressable = () => {
   const [marked, setMarked] = useState<boolean>(false);
 
   return <Open marked={marked} onClick={() => setMarked(!marked)} />;
