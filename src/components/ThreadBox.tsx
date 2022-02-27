@@ -1,5 +1,5 @@
 import { Cell } from "./svg/Cell";
-import { calcHalfCut, HalfCut } from "./svg/modules";
+import { HalfCut } from "./svg/modules";
 import { Open } from "./svg/Open";
 
 interface Props {
