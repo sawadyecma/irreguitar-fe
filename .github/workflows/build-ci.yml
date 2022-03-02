@@ -1,0 +1,14 @@
+name: build-ci
+on: [push]
+
+jobs:
+  build-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build
+      - name: build-storybook
+        run: npm run build-storybook
