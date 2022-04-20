@@ -41,9 +41,9 @@ export const GuitarBox = ({
               <text
                 x="50%"
                 y="50%"
-                text-anchor="middle"
-                dominant-baseline="central"
-                font-size="16"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fontSize="16"
               >
                 {
                   { 6: "E", 5: "A", 4: "D", 3: "G", 2: "B", 1: "E" }[
