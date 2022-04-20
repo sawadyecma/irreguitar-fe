@@ -1,4 +1,4 @@
-import { CELL_HEIGHT, CELL_WEIGHT } from "../constants/cell";
+import { CELL_HEIGHT, CELL_WEIGHT, CELL_WIDTH } from "../constants/cell";
 import { Thread } from "../types/thread";
 import { calcHalfCut } from "./svg/modules";
 import { ThreadBox } from "./ThreadBox";
@@ -28,6 +28,30 @@ export const GuitarBox = ({
               height: CELL_HEIGHT - CELL_WEIGHT / 2,
             }}
           >
+            <svg
+              height={CELL_HEIGHT}
+              width={CELL_WIDTH / 2}
+              onClick={() => {
+                console.log("onPegClick");
+              }}
+              style={{
+                cursor: "pointer",
+              }}
+            >
+              <text
+                x="50%"
+                y="50%"
+                text-anchor="middle"
+                dominant-baseline="central"
+                font-size="16"
+              >
+                {
+                  { 6: "E", 5: "A", 4: "D", 3: "G", 2: "B", 1: "E" }[
+                    thread.thNum
+                  ]
+                }
+              </text>
+            </svg>
             <ThreadBox
               fletCnt={fletCnt}
               markedFlets={thread.markedFlets}
