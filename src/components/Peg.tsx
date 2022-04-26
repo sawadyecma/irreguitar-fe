@@ -1,32 +1,41 @@
+import { Button, Popover } from "antd";
 import { AbsnoteImpl } from "irreguitar-pkg";
 import { CELL_HEIGHT, CELL_WIDTH } from "../constants/cell";
 import { Thread } from "../types/thread";
+import "antd/dist/antd.css";
+import { useState } from "react";
 
 interface Props {
   thread: Thread;
 }
 
 export const Peg = ({ thread }: Props) => {
+  const [state, setState] = useState({ popoverVisible: false });
   return (
-    <svg
-      height={CELL_HEIGHT}
-      width={CELL_WIDTH / 2}
-      onClick={() => {
-        console.log("onPegClick");
-      }}
+    <div
       style={{
-        cursor: "pointer",
+        height: CELL_HEIGHT,
+        width: CELL_WIDTH / 2,
+        display: "flex",
+        alignItems: "center",
       }}
     >
-      <text
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontSize="16"
+      <Popover
+        content={<a>Close</a>}
+        title="Title"
+        trigger="click"
+        visible={state.popoverVisible}
+        onVisibleChange={(popoverVisible) => {
+          setState((state) => {
+            return { ...state, popoverVisible };
+          });
+        }}
+        placement="topLeft"
       >
-        {new AbsnoteImpl(thread.openNote).getName({ onlyPrefix: true })}
-      </text>
-    </svg>
+        <Button type="primary" shape="circle">
+          {new AbsnoteImpl(thread.openNote).getName({ onlyPrefix: true })}
+        </Button>
+      </Popover>
+    </div>
   );
 };
