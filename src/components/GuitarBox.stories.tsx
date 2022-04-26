@@ -1,5 +1,6 @@
+import { TURNING_CATALOG } from "irreguitar-pkg";
 import { useState } from "react";
-import { Thread } from "../types/thread";
+import { Thread, ThreadsFactory } from "../types/thread";
 import { ChordNameBox } from "./ChordNameBox";
 import { GuitarBox } from "./GuitarBox";
 
@@ -10,124 +11,47 @@ export default {
 
 export const NonPressedGuitar = () => (
   <GuitarBox
-    threads={[
-      {
-        thNum: 1,
-        markedFlets: [],
-      },
-      {
-        thNum: 2,
-        markedFlets: [],
-      },
-      {
-        thNum: 3,
-        markedFlets: [],
-      },
-      {
-        thNum: 4,
-        markedFlets: [],
-      },
-      {
-        thNum: 5,
-        markedFlets: [],
-      },
-      {
-        thNum: 6,
-        markedFlets: [],
-      },
-    ]}
+    threads={ThreadsFactory.create({ turning: TURNING_CATALOG.Regular })}
   />
 );
 
 export const F_PressedGuitar = () => (
   <GuitarBox
-    threads={[
-      {
-        thNum: 1,
-        markedFlets: [1],
-      },
-      {
-        thNum: 2,
-        markedFlets: [1],
-      },
-      {
-        thNum: 3,
-        markedFlets: [2],
-      },
-      {
-        thNum: 4,
-        markedFlets: [3],
-      },
-      {
-        thNum: 5,
-        markedFlets: [3],
-      },
-      {
-        thNum: 6,
-        markedFlets: [1],
-      },
-    ]}
+    threads={ThreadsFactory.create({
+      turning: TURNING_CATALOG.Regular,
+      markedFlets: new Map([
+        [1, [1]],
+        [2, [1]],
+        [3, [2]],
+        [4, [3]],
+        [5, [3]],
+        [6, [1]],
+      ]),
+    })}
   />
 );
 
 export const MinorPentaScale = () => (
   <GuitarBox
-    threads={[
-      {
-        thNum: 1,
-        markedFlets: [5, 8],
-      },
-      {
-        thNum: 2,
-        markedFlets: [5, 8],
-      },
-      {
-        thNum: 3,
-        markedFlets: [5, 7],
-      },
-      {
-        thNum: 4,
-        markedFlets: [5, 7],
-      },
-      {
-        thNum: 5,
-        markedFlets: [5, 7],
-      },
-      {
-        thNum: 6,
-        markedFlets: [5, 8],
-      },
-    ]}
+    threads={ThreadsFactory.create({
+      turning: TURNING_CATALOG.Regular,
+      markedFlets: new Map([
+        [1, [5, 8]],
+        [2, [5, 8]],
+        [3, [5, 7]],
+        [4, [5, 7]],
+        [5, [5, 7]],
+        [6, [5, 8]],
+      ]),
+      threadOrder: "asc",
+    })}
   />
 );
 
 export const ScaleMaker = () => {
-  const [threads, setThreads] = useState<Thread[]>([
-    {
-      thNum: 1,
-      markedFlets: [],
-    },
-    {
-      thNum: 2,
-      markedFlets: [],
-    },
-    {
-      thNum: 3,
-      markedFlets: [],
-    },
-    {
-      thNum: 4,
-      markedFlets: [],
-    },
-    {
-      thNum: 5,
-      markedFlets: [],
-    },
-    {
-      thNum: 6,
-      markedFlets: [],
-    },
-  ]);
+  const [threads, setThreads] = useState<Thread[]>(
+    ThreadsFactory.create({ turning: TURNING_CATALOG.Regular })
+  );
 
   const onClickHandler = (thNum: number, flet: number): void => {
     const targetThread = threads.find((t) => t.thNum === thNum);
@@ -164,32 +88,16 @@ export const ScaleMaker = () => {
 };
 
 export const ChordMaker = () => {
-  const [threads, setThreads] = useState<Thread[]>([
-    {
-      thNum: 1,
-      markedFlets: [],
-    },
-    {
-      thNum: 2,
-      markedFlets: [],
-    },
-    {
-      thNum: 3,
-      markedFlets: [0],
-    },
-    {
-      thNum: 4,
-      markedFlets: [2],
-    },
-    {
-      thNum: 5,
-      markedFlets: [3],
-    },
-    {
-      thNum: 6,
-      markedFlets: [],
-    },
-  ]);
+  const [threads, setThreads] = useState<Thread[]>(
+    ThreadsFactory.create({
+      turning: TURNING_CATALOG.Regular,
+      markedFlets: new Map([
+        [3, [0]],
+        [4, [2]],
+        [5, [3]],
+      ]),
+    })
+  );
 
   const onClickHandler = (thNum: number, flet: number): void => {
     const targetThread = threads.find((t) => t.thNum === thNum);
