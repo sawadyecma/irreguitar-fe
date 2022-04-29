@@ -11,6 +11,7 @@ interface Props {
 
 export const Peg = ({ thread }: Props) => {
   const [state, setState] = useState({ popoverVisible: false });
+
   return (
     <div
       style={{
@@ -21,7 +22,18 @@ export const Peg = ({ thread }: Props) => {
       }}
     >
       <Popover
-        content={<a>Close</a>}
+        content={
+          <Button
+            type="text"
+            onClick={() => {
+              setState((state) => {
+                return { ...state, popoverVisible: false };
+              });
+            }}
+          >
+            Close
+          </Button>
+        }
         title="Title"
         trigger="click"
         visible={state.popoverVisible}
