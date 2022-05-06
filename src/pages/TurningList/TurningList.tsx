@@ -7,6 +7,7 @@ import {
   ChordNamerImpl,
   ChordParserImpl,
 } from "irreguitar-pkg";
+import { ChordMaker } from "../../components/GuitarBox.stories";
 export const TurningList = () => {
   const flets = Array.from(Array(12), (_, k) => k);
 
@@ -29,6 +30,7 @@ export const TurningList = () => {
         return <Cell marked={f % 3 === 2} />;
       })}
       chord name: {parser.parse(chord)}
+      <ChordMaker />
     </>
   );
 };

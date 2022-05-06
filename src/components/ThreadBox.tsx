@@ -23,7 +23,7 @@ export const ThreadBox = ({
   const flets = Array.from(Array(fletCnt), (_, k) => k);
 
   return (
-    <>
+    <div>
       {flets.map((f) => {
         if (f === 0) {
           return (
@@ -45,6 +45,6 @@ export const ThreadBox = ({
           );
         }
       })}
-    </>
+    </div>
   );
 };

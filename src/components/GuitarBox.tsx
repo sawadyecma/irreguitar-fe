@@ -27,6 +27,8 @@ export const GuitarBox = ({
             key={thread.thNum}
             style={{
               height: CELL_HEIGHT - CELL_WEIGHT / 2,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Peg thread={thread} />
