@@ -8,12 +8,14 @@ interface Props {
   threads: Thread[];
   fletCnt?: number;
   onClick?: (thNum: number, flet: number) => void;
+  onTurn?: (thNum: number, diff: number) => void;
 }
 
 export const GuitarBox = ({
   threads,
   fletCnt = 15,
   onClick = undefined,
+  onTurn = undefined,
 }: Props) => {
   return (
     <div
@@ -31,7 +33,12 @@ export const GuitarBox = ({
               alignItems: "center",
             }}
           >
-            <Peg thread={thread} />
+            <Peg
+              thread={thread}
+              onTurn={(diff) =>
+                onTurn ? onTurn(thread.thNum, diff) : undefined
+              }
+            />
             <ThreadBox
               fletCnt={fletCnt}
               markedFlets={thread.markedFlets}

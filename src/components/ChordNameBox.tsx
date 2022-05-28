@@ -1,12 +1,16 @@
 import {
+  AbsnoteImpl,
   ChordAnalyzerImpl,
   ChordNamerImpl,
   ChordParserImpl,
   PlayImpl,
   Press,
-  TURNING_CATALOG,
+  Thread,
+  ThreadImpl,
+  ThreadNum,
+  TurningImpl,
 } from "irreguitar-pkg";
-import { Thread } from "../types/thread";
+import { Thread as ThreadType } from "../types/thread";
 
 export const chordParser = new ChordParserImpl(
   new ChordAnalyzerImpl(),
@@ -14,7 +18,7 @@ export const chordParser = new ChordParserImpl(
 );
 
 interface Props {
-  threads: Thread[];
+  threads: ThreadType[];
 }
 
 export const ChordNameBox = ({ threads }: Props) => {
@@ -23,7 +27,7 @@ export const ChordNameBox = ({ threads }: Props) => {
   });
 
   const rootPress = {
-    threadNum: rootThread.thNum as number,
+    threadNum: rootThread.thNum,
     flet: rootThread.markedFlets[0],
   };
 
@@ -39,7 +43,17 @@ export const ChordNameBox = ({ threads }: Props) => {
       };
     });
 
-  const play = new PlayImpl(TURNING_CATALOG.Regular);
+  const play = new PlayImpl(
+    new TurningImpl(
+      new Map<ThreadNum, Thread>(
+        threads.map((thread) => [
+          thread.thNum,
+          new ThreadImpl(new AbsnoteImpl(thread.openNote)),
+        ])
+      )
+    )
+  );
+
   const chord = play.getChord(rootPress, presses);
 
   const chordName = chordParser.parse(chord);

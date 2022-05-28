@@ -1,4 +1,4 @@
-import { Button, Popover } from "antd";
+import { Button, InputNumber, Popover, Slider } from "antd";
 import { AbsnoteImpl } from "irreguitar-pkg";
 import { CELL_HEIGHT, CELL_WIDTH } from "../constants/cell";
 import { Thread } from "../types/thread";
@@ -7,10 +7,15 @@ import { useState } from "react";
 
 interface Props {
   thread: Thread;
+  onTurn: (diff: number) => void;
 }
 
-export const Peg = ({ thread }: Props) => {
+const min = -5;
+const max = 5;
+
+export const Peg = ({ thread, onTurn }: Props) => {
   const [state, setState] = useState({ popoverVisible: false });
+  const [slideValue, setSlideValue] = useState(0);
 
   return (
     <div
@@ -23,24 +28,60 @@ export const Peg = ({ thread }: Props) => {
     >
       <Popover
         content={
-          <Button
-            type="text"
-            onClick={() => {
-              setState((state) => {
-                return { ...state, popoverVisible: false };
-              });
-            }}
-          >
-            Close
-          </Button>
+          <>
+            <InputNumber
+              size="small"
+              min={min}
+              max={max}
+              style={{ margin: "0 16px" }}
+              value={slideValue}
+              onChange={setSlideValue}
+            />
+            <Slider
+              marks={{
+                0: "±0",
+                [min]: min,
+                [max]: max,
+              }}
+              min={min}
+              max={max}
+              defaultValue={slideValue}
+              value={slideValue}
+              onChange={setSlideValue}
+              included={false}
+            />
+            <Button
+              type="text"
+              size="small"
+              onClick={() => {
+                setState((state) => {
+                  return { ...state, popoverVisible: false };
+                });
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="primary"
+              size="small"
+              onClick={() => {
+                onTurn(slideValue);
+                setState((state) => {
+                  return { ...state, popoverVisible: false };
+                });
+              }}
+            >
+              Apply
+            </Button>
+          </>
         }
-        title="Title"
         trigger="click"
         visible={state.popoverVisible}
         onVisibleChange={(popoverVisible) => {
           setState((state) => {
             return { ...state, popoverVisible };
           });
+          setSlideValue(0);
         }}
         placement="topLeft"
       >
