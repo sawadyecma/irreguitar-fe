@@ -130,9 +130,24 @@ export const ChordMaker = () => {
     });
   };
 
+  const onTurnHandler = (thNum: number, diff: number) => {
+    setThreads((threads) => {
+      return threads.map((thread) => {
+        if (thread.thNum === thNum) {
+          return { ...thread, openNote: thread.openNote + diff };
+        }
+        return thread;
+      });
+    });
+  };
+
   return (
     <>
-      <GuitarBox threads={threads} onClick={onClickHandler} />
+      <GuitarBox
+        threads={threads}
+        onClick={onClickHandler}
+        onTurn={onTurnHandler}
+      />
       <ChordNameBox threads={threads} />
     </>
   );
