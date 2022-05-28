@@ -2,7 +2,7 @@ import { Button, Popover } from "antd";
 import { AbsnoteImpl } from "irreguitar-pkg";
 import { CELL_HEIGHT, CELL_WIDTH } from "../constants/cell";
 import { Thread } from "../types/thread";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { useState } from "react";
 
 interface Props {
