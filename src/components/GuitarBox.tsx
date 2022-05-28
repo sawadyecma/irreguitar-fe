@@ -33,12 +33,14 @@ export const GuitarBox = ({
               alignItems: "center",
             }}
           >
-            <Peg
-              thread={thread}
-              onTurn={(diff) =>
-                onTurn ? onTurn(thread.thNum, diff) : undefined
-              }
-            />
+            <div style={{ marginRight: "8px" }}>
+              <Peg
+                thread={thread}
+                onTurn={(diff) =>
+                  onTurn ? onTurn(thread.thNum, diff) : undefined
+                }
+              />
+            </div>
             <ThreadBox
               fletCnt={fletCnt}
               markedFlets={thread.markedFlets}
