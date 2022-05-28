@@ -1,5 +1,6 @@
 import { CELL_HEIGHT, CELL_WEIGHT } from "../constants/cell";
 import { Thread } from "../types/thread";
+import { FletIndicator } from "./FletIndicator";
 import { Peg } from "./Peg";
 import { calcHalfCut } from "./svg/modules";
 import { ThreadBox } from "./ThreadBox";
@@ -23,6 +24,9 @@ export const GuitarBox = ({
         whiteSpace: "nowrap",
       }}
     >
+      <div style={{ position: "relative", top: 16, left: 0 }}>
+        <FletIndicator fletCnt={fletCnt} />
+      </div>
       {threads.map((thread, index) => {
         return (
           <div
@@ -52,6 +56,9 @@ export const GuitarBox = ({
           </div>
         );
       })}
+      <div style={{ position: "relative", top: -16, left: 0 }}>
+        <FletIndicator fletCnt={fletCnt} />
+      </div>
     </div>
   );
 };
