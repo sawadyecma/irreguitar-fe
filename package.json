@@ -8,10 +8,10 @@
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "antd": "^4.20.6",
-    "irreguitar-pkg": "^0.2.10",
+    "irreguitar-pkg": "^0.2.11",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
     "tone": "^14.7.77",
     "typescript": "^4.6.3"
@@ -63,7 +63,7 @@
     "@storybook/preset-create-react-app": "^4.0.1",
     "@storybook/react": "^6.4.18",
     "@types/antd": "^1.0.0",
-    "chromatic": "^6.4.3",
+    "chromatic": "^6.5.4",
     "webpack": "^5.68.0"
   }
 }
