@@ -1,8 +1,10 @@
-import { TURNING_CATALOG } from "irreguitar-pkg";
+import { Button } from "antd";
+import { AbsnoteImpl, ThreadImpl, TURNING_CATALOG } from "irreguitar-pkg";
 import { useState } from "react";
 import { Thread, ThreadsFactory } from "../types/thread";
 import { ChordNameBox } from "./ChordNameBox";
 import { GuitarBox } from "./GuitarBox";
+import * as Tone from "tone";
 
 export default {
   title: "GuitarBox",
@@ -141,6 +143,34 @@ export const ChordMaker = () => {
     });
   };
 
+  const onStrokeHandler = (stroke: "up" | "down") => {
+    const initialAbsnotes: string[] = [];
+    const absnotes: string[] = threads.reduce((acc, cur) => {
+      if (cur.markedFlets.length === 0) {
+        return acc;
+      }
+
+      return [
+        ...acc,
+        ...cur.markedFlets.map((markedFlet) =>
+          new ThreadImpl(new AbsnoteImpl(cur.openNote))
+            .getNote(markedFlet)
+            .getName()
+        ),
+      ];
+    }, initialAbsnotes);
+
+    if (stroke === "down") {
+      absnotes.reverse();
+    }
+
+    const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+    const now = Tone.now();
+    absnotes.forEach((absnote, index) => {
+      synth.triggerAttackRelease(absnote, "8n", now + 0.03 * index);
+    });
+  };
+
   return (
     <>
       <GuitarBox
@@ -149,6 +179,12 @@ export const ChordMaker = () => {
         onTurn={onTurnHandler}
       />
       <ChordNameBox threads={threads} />
+      <Button type="primary" onClick={() => onStrokeHandler("down")}>
+        Down Stroke
+      </Button>
+      <Button type="primary" onClick={() => onStrokeHandler("up")}>
+        Up Stroke
+      </Button>
     </>
   );
 };
