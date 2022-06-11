@@ -3,7 +3,7 @@ import * as Tone from "tone";
 import { Button } from "antd";
 import Title from "antd/lib/typography/Title";
 
-export const ToneSmaples = () => {
+export const ToneSamples = () => {
   const hello = () => {
     //create a synth and connect it to the main output (your speakers)
     const synth = new Tone.Synth().toDestination();
